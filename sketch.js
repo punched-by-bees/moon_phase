@@ -8,8 +8,8 @@
 // does not need to look like a moon
 
 
-let topLid = 50;
-let bottomLid = 850;
+let topLid = 75;
+let bottomLid = 825;
 
 function setup() {
 	createCanvas(2000, 900);
@@ -17,6 +17,9 @@ function setup() {
 
 function draw() {
 	background(150);
+
+	//centering tool
+	line
 
  //moon();
 
@@ -26,8 +29,8 @@ function draw() {
  	noFill();
     strokeWeight(10);
 	beginShape();
-	vertex(200, 200);
-	quadraticVertex(400, topLid, 500, 500);
+	vertex(666, 450);
+	quadraticVertex(1050, topLid, 1333, 450);
 	//second argument of quad vertex will be custom phase variable
 	endShape();
 
@@ -35,8 +38,19 @@ function draw() {
 	noFill();
     strokeWeight(10);
 	beginShape();
-	vertex(200, 700);
-	quadraticVertex(400, bottomLid, 500, 500);
+	vertex(666, 450);
+	quadraticVertex(950, bottomLid, 1333, 450);
+	//second argument of quad vertex will be custom phase variable
+	endShape();
+
+	//
+
+	 //top eye fold
+ 	noFill();
+    strokeWeight(10);
+	beginShape();
+	vertex(666, 350);
+	quadraticVertex(1000, 50, 1333, 400);
 	//second argument of quad vertex will be custom phase variable
 	endShape();
 
