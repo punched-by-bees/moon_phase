@@ -18,8 +18,7 @@ function setup() {
 function draw() {
 	background(150);
 
-	//centering tool
-	line
+
 
  //moon();
 
@@ -30,7 +29,7 @@ function draw() {
     strokeWeight(10);
 	beginShape();
 	vertex(666, 450);
-	quadraticVertex(1050, topLid, 1333, 450);
+	quadraticVertex(1050, topLid++, 1333, 450);
 	//second argument of quad vertex will be custom phase variable
 	endShape();
 
@@ -39,7 +38,7 @@ function draw() {
     strokeWeight(10);
 	beginShape();
 	vertex(666, 450);
-	quadraticVertex(950, bottomLid, 1333, 450);
+	quadraticVertex(950, bottomLid++, 1333, 450);
 	//second argument of quad vertex will be custom phase variable
 	endShape();
 
@@ -56,6 +55,14 @@ function draw() {
 
 
 }
+function topblink(phase, yLoc){
+	if (phase >= 30){
+		phase = map(phase, 0, 15, 0, 300);
+	}else{
+		phase = map(phase, 15, 30, 300, 0);
+	}
+}
+
 
 
 //my notes:
