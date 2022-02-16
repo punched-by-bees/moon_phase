@@ -10,6 +10,10 @@
 
 let topLid = 75;
 let bottomLid = 825;
+let leftxAnchor = 666;
+let leftyAnchor = 450;
+let rightxAnchor = 1333;
+let rightyAnchor = 400;
 
 function setup() {
 	createCanvas(2000, 900);
@@ -28,8 +32,8 @@ function draw() {
  	noFill();
     strokeWeight(10);
 	beginShape();
-	vertex(666, 450);
-	quadraticVertex(1050, topLid++, 1333, 450);
+	vertex(leftxAnchor, leftyAnchor);
+	quadraticVertex(1050, topLid++, rightxAnchor, rightyAnchor);
 	//second argument of quad vertex will be custom phase variable
 	endShape();
 
@@ -37,8 +41,8 @@ function draw() {
 	noFill();
     strokeWeight(10);
 	beginShape();
-	vertex(666, 450);
-	quadraticVertex(950, bottomLid++, 1333, 450);
+	vertex(leftxAnchor, leftyAnchor);
+	quadraticVertex(950, bottomLid--, rightxAnchor, rightyAnchor);
 	//second argument of quad vertex will be custom phase variable
 	endShape();
 
@@ -48,7 +52,7 @@ function draw() {
  	noFill();
     strokeWeight(10);
 	beginShape();
-	vertex(666, 350);
+	vertex(leftxAnchor, 350);
 	quadraticVertex(1000, 50, 1333, 400);
 	//second argument of quad vertex will be custom phase variable
 	endShape();
