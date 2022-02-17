@@ -7,8 +7,8 @@
 // moon, and 30 is an almost new moon.
 // does not need to look like a moon
 
-
 let topLid = 74;
+let topSpeed = 1;
 let bottomLid = 825;
 let closed = 525;
 let leftxAnchor = 666;
@@ -32,7 +32,7 @@ function draw() {
 	quadraticVertex(1050, topLid, rightxAnchor, rightyAnchor);
 	endShape();
 
- 	blink(topLid, 75, 1);
+ //	blink(topLid, 75, 1);
 
 	//bottom eyelid bezier
 	noFill();
@@ -41,6 +41,9 @@ function draw() {
 	vertex(leftxAnchor, leftyAnchor);
 	quadraticVertex(950, bottomLid, rightxAnchor, rightyAnchor);
 	endShape();
+		
+ blink();
+
 
 	//top eye fold
  	noFill();
@@ -50,23 +53,40 @@ function draw() {
 	quadraticVertex(900, 100, 1100, 175);
 	endShape();
 
+	console.log(topLid, flag);
+	
 }
-
-
-function blink(lid, openLid, speed){
-	if(lid < 75){
+	
+function blink(phase){
+	if(topLid < 75){
 		flag = false
 	}
-	if (lid < closed && flag == false){
- 		lid = lid + speed
- 		if (lid == closed){
+	if (topLid <= closed && flag == false){
+ 		topLid = topLid + topSpeed
+ 		if (topLid == closed){
  		flag = true;
  		}
- 			if (flag){
- 			lid = lid - speed
+ 	}
+
+ 	if (flag == true){
+ 			topLid = topLid - topSpeed
  			}
-		}
 }
+
+// function blink(lid, openLid, speed){
+// 	if(lid < 75){
+// 		flag = false
+// 	}
+// 	if (lid < closed && flag == false){
+//  		lid = lid + speed
+//  		if (lid == closed){
+//  		flag = true;
+//  		}
+//  			if (flag){
+//  			lid = lid - speed
+//  			}
+// 		}
+// }
 
 
 //masking layer for eye ball
