@@ -32,3 +32,5 @@ git commit -am'commit message goes here'
 git push origin main
 
 message for git commit is an update ex: fixed bug or updated picture
+
+![charcoal_background](https://user-images.githubusercontent.com/97642127/154559252-d4a926ed-fe72-4769-923a-127d5e17fe99.png)
