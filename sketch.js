@@ -10,10 +10,14 @@
 
 let topLid = 75;
 let bottomLid = 825;
+let closed = 525
 let leftxAnchor = 666;
 let leftyAnchor = 450;
 let rightxAnchor = 1333;
 let rightyAnchor = 400;
+let topSpeed = 1;
+let bottomSpeed = 1;
+let flag = false;
 
 function setup() {
 	createCanvas(2000, 900);
@@ -22,51 +26,68 @@ function setup() {
 function draw() {
 	background(150);
 
+ //topBlink();
 
-
- //moon();
-
-//function moon(phase, xLoc, yLoc, overallSize){ //phase should be between 0-30
+ 	// if (topLid == closed && flag true ){
+ 	// 	topLid = topLid - topSpeed;
+ 	//}
  
-   //top eyelid bezier
+  //top eyelid bezier
  	noFill();
-    strokeWeight(10);
+  strokeWeight(10);
 	beginShape();
 	vertex(leftxAnchor, leftyAnchor);
-	quadraticVertex(1050, topLid++, rightxAnchor, rightyAnchor);
-	//second argument of quad vertex will be custom phase variable
+	quadraticVertex(1050, topLid, rightxAnchor, rightyAnchor);
 	endShape();
 
 	//bottom eyelid bezier
 	noFill();
-    strokeWeight(10);
+  strokeWeight(10);
 	beginShape();
 	vertex(leftxAnchor, leftyAnchor);
-	quadraticVertex(950, bottomLid--, rightxAnchor, rightyAnchor);
-	//second argument of quad vertex will be custom phase variable
+	quadraticVertex(950, bottomLid, rightxAnchor, rightyAnchor);
 	endShape();
 
-	//
-
-	 //top eye fold
+	//top eye fold
  	noFill();
-    strokeWeight(10);
+  strokeWeight(10);
 	beginShape();
 	vertex(leftxAnchor, 350);
-	quadraticVertex(1000, 50, 1333, 400);
-	//second argument of quad vertex will be custom phase variable
+	quadraticVertex(900, 100, 1100, 175);
 	endShape();
 
+ 	if (topLid == closed){
+ 		flag = true;
+ 	}
+ 	if (flag == true){
+ 		topLid = toplid - topspeed
+ 	}
+	if (topLid < closed && flag == false){
+ 		topLid = topLid + topSpeed
+ 	}
 
 }
-function topblink(phase, yLoc){
-	if (phase >= 30){
-		phase = map(phase, 0, 15, 0, 300);
-	}else{
-		phase = map(phase, 15, 30, 300, 0);
-	}
-}
 
+
+topBlink
+
+// function topBlink(topLid, closed){
+// 	if (topLid < closed){
+//  		topLid = topLid + topSpeed;
+//  	}
+// 	if (flag){
+// 		topLid = topLid - topSpeed;
+// 	}
+// }
+		// }else { //aka if topLid less than 550 or not closed
+		// topLid = topLid + topSpeed //change speed to match bottom
+
+
+//if (topLid == 74){flag = true}
+
+//if(topLid == 550 && flag = true){ decrement}
+
+//iftopLid == 74? && flag = false){increment}
 
 
 //my notes:
@@ -89,7 +110,6 @@ function topblink(phase, yLoc){
 // i can use map to invert and change the range of phaseBlinker
 // blinkDirection variable that you reassign to be 1 or -1
 // whereas range of values is probably done with mapping.
-
 
 //Jesses example:
 
