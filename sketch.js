@@ -9,7 +9,8 @@
 
 let topLid = 74;
 let topSpeed = 1;
-let bottomLid = 825;
+let bottomLid = 826;
+let bottomSpeed = 1;
 let closed = 525;
 let leftxAnchor = 666;
 let leftyAnchor = 450;
@@ -32,7 +33,7 @@ function draw() {
 	quadraticVertex(1050, topLid, rightxAnchor, rightyAnchor);
 	endShape();
 
- //	blink(topLid, 75, 1);
+	blink();
 
 	//bottom eyelid bezier
 	noFill();
@@ -41,10 +42,9 @@ function draw() {
 	vertex(leftxAnchor, leftyAnchor);
 	quadraticVertex(950, bottomLid, rightxAnchor, rightyAnchor);
 	endShape();
+
+	bottomBlink();
 		
- blink();
-
-
 	//top eye fold
  	noFill();
   strokeWeight(5);
@@ -57,7 +57,7 @@ function draw() {
 	
 }
 	
-function blink(phase){
+function blink(){
 	if(topLid < 75){
 		flag = false
 	}
@@ -73,20 +73,21 @@ function blink(phase){
  			}
 }
 
-// function blink(lid, openLid, speed){
-// 	if(lid < 75){
-// 		flag = false
-// 	}
-// 	if (lid < closed && flag == false){
-//  		lid = lid + speed
-//  		if (lid == closed){
-//  		flag = true;
-//  		}
-//  			if (flag){
-//  			lid = lid - speed
-//  			}
-// 		}
-// }
+function bottomBlink(){
+	if(bottomLid > 825){
+		flag = false
+	}
+	if (bottomLid >= closed && flag == false){
+ 		bottomLid = bottomLid - bottomSpeed
+ 		if (bottomLid == closed){
+ 		flag = true;
+ 		}
+ 	}
+
+ 	if (flag == true){
+ 			bottomLid = bottomLid + bottomSpeed
+ 			}
+}
 
 
 //masking layer for eye ball
