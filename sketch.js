@@ -7,6 +7,11 @@
 // moon, and 30 is an almost new moon.
 // does not need to look like a moon
 
+let background;
+let eyeBall;
+let eyeX = 1000;
+let eyeY = 450;
+
 let topLid = 74;
 let topSpeed = 1;
 let bottomLid = 826;
@@ -18,12 +23,60 @@ let rightxAnchor = 1333;
 let rightyAnchor = 400;
 let flag = false;
 
+function preload(){
+  background = loadImage('assets/charcoal_background.png');
+  eyeBall = loadImage("assets/eye2.png");
+}
+
 function setup() {
 	createCanvas(2000, 950);
 }
 
 function draw() {
-	background(150);
+  image(background, 0, 0);
+  imageMode(CENTER);
+  image(eyeBall, eyeX, eyeY);
+
+// iris tracking mouse conditionals
+ if (eyeX < 1300){
+   if (mouseX > eyeX){
+    eyeX = eyeX + 2
+   }
+ }
+ if (eyeX > 700){
+   if (mouseX < eyeX){
+    eyeX = eyeX - 2
+   }
+ }
+
+  if (eyeY > 300){
+   if (mouseY < eyeY){
+    eyeY = eyeY - 2
+   }
+ }
+ if (eyeY < 600){
+   if (mouseY > eyeY){
+    eyeY = eyeY + 2
+   }
+ }
+//console.log(eyeX, eyeY);
+
+
+//masking layer
+	//top lid
+	noFill();
+	beginShape();
+	vertex(leftxAnchor, leftyAnchor);
+	quadraticVertex(1050, topLid, rightxAnchor, rightyAnchor);
+	endShape();
+
+	//bottom lid
+	noFill();
+	beginShape();
+	vertex(leftxAnchor, leftyAnchor);
+	quadraticVertex(950, bottomLid, rightxAnchor, rightyAnchor);
+	endShape();
+
 
   //top eyelid bezier
  	noFill();
@@ -53,7 +106,7 @@ function draw() {
 	quadraticVertex(900, 100, 1100, 175);
 	endShape();
 
-	console.log(topLid, flag);
+	//console.log(topLid, bottomLid, flag);
 	
 }
 	
@@ -61,6 +114,9 @@ function blink(){
 	if(topLid < 75){
 		flag = false
 	}
+	if (flag == true){
+ 		topLid = topLid - topSpeed
+ 		}
 	if (topLid <= closed && flag == false){
  		topLid = topLid + topSpeed
  		if (topLid == closed){
@@ -68,15 +124,16 @@ function blink(){
  		}
  	}
 
- 	if (flag == true){
- 			topLid = topLid - topSpeed
- 			}
+
 }
 
 function bottomBlink(){
 	if(bottomLid > 825){
 		flag = false
 	}
+	if (flag == true){
+ 		bottomLid = bottomLid + bottomSpeed
+ 		}
 	if (bottomLid >= closed && flag == false){
  		bottomLid = bottomLid - bottomSpeed
  		if (bottomLid == closed){
@@ -84,10 +141,19 @@ function bottomBlink(){
  		}
  	}
 
- 	if (flag == true){
- 			bottomLid = bottomLid + bottomSpeed
- 			}
+
 }
+
+//lids maximum point is 374
+
+//IF lid is higher or lower than most open point THEN:
+	//switch is false
+//IF lid is past closed position and switch is false THEN:
+	//lids movement is reversed 
+		//IF lid is closed
+		// switch is true
+//IF switch is true THEN:
+	//lid moves opposite direction
 
 
 //masking layer for eye ball
