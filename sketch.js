@@ -7,6 +7,13 @@
 // moon, and 30 is an almost new moon.
 // does not need to look like a moon
 
+//current issues:
+	// no masking layer for outside of eyeball image
+	// background image is being drawn in the upper left cordner
+	// but also being drawn larger across the entire screen only once?
+	// eyelids only getting close together but not touching/closing
+	//
+
 let background;
 let eyeBall;
 let eyeX = 1000;
@@ -24,8 +31,8 @@ let rightyAnchor = 400;
 let flag = false;
 
 function preload(){
-  background = loadImage('assets/charcoal_background.png');
-  eyeBall = loadImage("assets/eye2.png");
+  background = loadImage('assets/cloud_background.png');
+  eyeBall = loadImage("assets/eye_ball.png");
 }
 
 function setup() {
@@ -62,20 +69,9 @@ function draw() {
 //console.log(eyeX, eyeY);
 
 
-//masking layer
-	//top lid
-	noFill();
-	beginShape();
-	vertex(leftxAnchor, leftyAnchor);
-	quadraticVertex(1050, topLid, rightxAnchor, rightyAnchor);
-	endShape();
-
-	//bottom lid
-	noFill();
-	beginShape();
-	vertex(leftxAnchor, leftyAnchor);
-	quadraticVertex(950, bottomLid, rightxAnchor, rightyAnchor);
-	endShape();
+//masking layer???
+	//hole in background
+	//begin and endcontour functions
 
 
   //top eyelid bezier
